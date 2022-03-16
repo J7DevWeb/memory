@@ -14,6 +14,7 @@ include_once 'src/ScoreManager.php';
     <link rel="stylesheet" href="assets/css/style.min.css">
     <script defer src="assets/js/game-mechanic.js"></script>
     <script defer src="assets/js/modal.js"></script>
+    <script defer src="assets/js/validation.js"></script>
 </head>
 <body>
     <main>
