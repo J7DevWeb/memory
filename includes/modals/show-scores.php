@@ -6,7 +6,7 @@
                 <tr>
                     <td>Joueurs</td>
                     <td>Scores</td>
-                    <td>temps</td>
+                    <td>Temps</td>
                 </tr>
             </thead>
             <tbody>
