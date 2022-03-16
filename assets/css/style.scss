@@ -1,4 +1,4 @@
-@import "./colors-and-mixins";
+@import "./colors-and-mixins"; //La position de cet import a de l'importance car on définit dans celui ci des variables utilisées dans les imports suivants.
 @import "./form";
 @import "./global";
 @import "./game";

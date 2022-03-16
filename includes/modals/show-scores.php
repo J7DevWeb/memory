@@ -12,7 +12,7 @@
             <tbody>
                 <?php 
                 $scores = new ScoreManager(); // On instancie l'objet ce qui nous permet d'appeler juste après une de ses méthodes
-                $scores = $scores->getScores(); // On stock dans une variable le tableau renvoyer par la méthode. Celui ci contient les meilleurs joueurs que l'on va afficher juste après
+                $scores = $scores->getScores(); // On stock dans une variable le tableau renvoyer par la méthode. Celui ci contient 5 enregistrements que l'on va afficher juste après
                 foreach ($scores as $score) { // Pour chaque element [correspondant à un enregistrement (une ligne) de la BDD] dans le tableau on crée une ligne à l'affichage
                 ?>
                     <tr>

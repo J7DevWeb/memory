@@ -20,7 +20,7 @@ class DbConnexion
             return $db;
            
         } catch(PDOException $e) {
-            print "Erreur : " . $e->getMessage() . "<br/>"; //Affiche un message d'erreur si echec de la connection
+            print "Erreur : " . $e->getMessage() . "<br/>"; //Affiche un message d'erreur si echec de la connexion
         }
     }
 

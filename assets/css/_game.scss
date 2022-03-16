@@ -54,7 +54,7 @@
     border-radius: 14px;
 }
 
-//Rendre le plateau de jeu responsive (s'adapte aux écrans de petite taille)
+//Rendre le plateau de jeu responsive (il s'adapte aux écrans de petite taille)
 @media screen and (max-width: 640px) {
     .board {
         grid-template-columns: repeat(4, 1fr);

@@ -1,6 +1,6 @@
 <?php
 
-class ScoreManager extends DbConnexion //Extends correspond à l'heritage.
+class ScoreManager extends DbConnexion //extends correspond à l'heritage.
 {
 
     /**
@@ -8,16 +8,16 @@ class ScoreManager extends DbConnexion //Extends correspond à l'heritage.
      */
     protected function setScore(string $name, int $score, int $time): void 
     {
-        $sqlC = "INSERT INTO `best_scores`(`name`, `score`, `time`) VALUES (:playerName, :score, :playTime);"; //Requete en sql avec des paramétres nommés
-        $request = $this->connect()->prepare($sqlC); // On prépare la requete
-        $request->bindValue(":playerName", $name, PDO::PARAM_STR); //On associe un parametre nommé à sa valeur
+        $sqlC = "INSERT INTO `best_scores`(`name`, `score`, `time`) VALUES (:playerName, :score, :playTime);"; //Requête en sql avec des paramétres nommés
+        $request = $this->connect()->prepare($sqlC); // On prépare la requête
+        $request->bindValue(":playerName", $name, PDO::PARAM_STR); //On associe un paramètre nommé à sa valeur
         $request->bindValue(":score", $score, PDO::PARAM_INT); 
         $request->bindValue(":playTime", $time, PDO::PARAM_INT); 
         $request->execute(); // On execute la requête
     }
 
     /**
-     * Afficher les 5 meilleurs performances de la BDD en se basant sur le temps(ou le score en cas d'égalité de temps). on recupére un tableau au final.
+     * Retourne les 5 meilleurs enregistrements de la BDD en se basant sur le temps(ou le score en cas d'égalité de temps). On retourne un tableau au final.
      */
     public function getScores(): array 
     {
