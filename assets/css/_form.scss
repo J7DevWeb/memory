@@ -1,0 +1,19 @@
+.result {
+    margin: 7px;
+}
+
+.error {
+    color: $error-text-color;
+    text-shadow: 1px 1px 2px $text-color;
+    font-size: 1.3em;
+}
+
+input[type="text"] { // Seul l'input de type texte sera concerné
+    background-color: $transparent-color;
+    border-bottom: 2px solid $secondary-color;
+    border-radius: 7px;
+}
+
+.name-label {
+    color: $text-color;
+}
