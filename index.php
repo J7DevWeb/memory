@@ -1,5 +1,5 @@
 <?php
-//Le manager contient la méthode pour récupérer les 5 meilleurs Temps (ou score) en BDD.
+//Le manager contient la méthode pour récupérer les 5 meilleurs enregistrements en BDD en se basant sur le temps ou le score.
 include_once 'src/DbConnexion.php';
 include_once 'src/ScoreManager.php';
 ?>

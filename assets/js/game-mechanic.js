@@ -1,7 +1,7 @@
-// Pour comprendre la logique du jeu commencer par la fin de ce fichier. [Si une variable n'est pas défini dans la fonction il faut venir voir au début de ce fichier pour la retrouver (comprendre la portée des variables)]
+// Pour comprendre la logique du jeu commencer par la fin de ce fichier. [Si une variable n'est pas définie dans la fonction il faut venir voir au début de ce fichier pour la retrouver]
 // Déclaration des constantes
 const board = document.querySelector('#gameBoard'); // On selectionne le plateau de jeu via son id
-const choosenTimeToCompleteGame = 60; // Temps donné par le chronométre pour completer le jeu. Exercice : Laisser l'utilisateur choisir lui même le temps du chronométre.
+const choosenTimeToCompleteGame = 60; // Temps donné par le chronométre pour completer le jeu. Exercice : Laisser l'utilisateur choisir lui même le temps du chronométre via un input de type range.
 const displayResult = document.querySelector('#result');
 const displayScore = document.querySelector('#score');
 const endgameContainer = document.querySelector('#endgame-container');
@@ -33,9 +33,9 @@ function createBoard(){
     while(shuffledCards.length > 14){ // Seul 14 cartes sont utiles. On en retire 4 aléatoirements.
         shuffledCards.splice(Math.floor( Math.random()*shuffledCards.length ), 1);
     }
-    shuffledCards = shuffledCards.concat(shuffledCards); // On Cré une copie de chaque carte pour obtenir le plateau de 28 cartes.
+    shuffledCards = shuffledCards.concat(shuffledCards); // On Crée une copie de chaque carte pour obtenir le plateau de 28 cartes.
     shuffledCards.sort(()=> 0.5 - Math.random()); // On trie aléatoirement le tableau.
-    for(let i = 0; i < 28 ; i++){ // On génére le plateau
+    for(let i = 0; i < 28 ; i++){ // On génére le plateau de jeu
         let card = document.createElement('img');
         card.setAttribute('src', 'assets/images/back.png'); // Les cartes sont toutes face cachée
         card.setAttribute('class', 'card');
@@ -48,8 +48,8 @@ function createBoard(){
 }
 
 function checkIfCardsMatches(){
-    card1 = document.querySelector(`[data-id='${choosenCards[0]}']`); // On stock notre carte dans une variable
-    card2 = document.querySelector(`[data-id='${choosenCards[2]}']`); // On stock notre carte dans une variable
+    card1 = document.querySelector(`[data-id='${choosenCards[0]}']`); // On stock l'id de notre 1er carte dans une variable
+    card2 = document.querySelector(`[data-id='${choosenCards[2]}']`); // On stock l'id de notre 2eme carte dans une variable
     card1.classList.remove('shake'); // Supprime la classe qui ajoute une animation lors du clique de l'utilisateur sur une carte
     card2.classList.remove('shake'); // Supprime la classe qui ajoute une animation lors du clique de l'utilisateur sur une carte
     if(choosenCards[1] !== choosenCards[3]){
@@ -73,12 +73,12 @@ function flipCard(){
         this.classList.add('shake'); // On ajoute une classe à la carte ce qui permet de lui ajouter une animation
         let clickedCardValue = this.getAttribute('data-value'); // On récupére la valeur de la carte qui correspond au fruit.
         choosenCards.push(clickedCardId); // On ajoute l'identifiant de la carte dans le tableau.
-        choosenCards.push(clickedCardValue); // On ajoute la valeur de la carte si qui nous permettra de la comparer avec la valeur d'une autre carte.
-        this.setAttribute('src', 'assets/images/'+clickedCardValue+'.png'); // On affiche le fruit grace à la valeur de la carte.
-        if(choosenCards.length === 4){ // Quand on a choisit 2 cartes
-            disableGame = true; // On empeche que pendant la demi-seconde de latence ou les 2 cartes choisies sont face visible le joueur continu de jouer.
+        choosenCards.push(clickedCardValue); // On ajoute la valeur de la carte ce qui nous permettra de la comparer avec la valeur d'une autre carte.
+        this.setAttribute('src', 'assets/images/'+clickedCardValue+'.png'); // On affiche le fruit grâce à la valeur de la carte.
+        if(choosenCards.length === 4){ // Quand on a choisi 2 cartes :
+            disableGame = true; // On empeche que pendant la demi-seconde de latence ou les 2 cartes choisies sont face visible le joueur continue de jouer.
             setTimeout(() => {
-                checkIfCardsMatches(); //On vérifie si les 2 cartes retournées sont identique ou non.
+                checkIfCardsMatches(); //On vérifie si les 2 cartes retournées sont identiques ou non.
                 disableGame = false; // On Indique qu'on change de tour
             }, 500);
  
@@ -93,9 +93,9 @@ function endgame(win){
     }else{
         msg = 'Défaite !!!';
     }
-    endgameContainer.classList.remove('hide'); // On affiche la modal qui permet à l'utilisateur de stocker sont score en BDD et/ou de rejouer.
-    timeToComplete.setAttribute('value', choosenTimeToCompleteGame - chrono); // On affiche le temps mis par l'utilisateur dans le formulaire
-    displayScore.setAttribute('value', score); // On affiche le nombre de paires trouvées par l'utilisateur dans le formulaire
+    endgameContainer.classList.remove('hide'); // On affiche la modal qui permet à l'utilisateur de stocker son score et son temps en BDD et/ou de rejouer.
+    timeToComplete.setAttribute('value', choosenTimeToCompleteGame - chrono); // On envoie le temps mis par l'utilisateur dans le formulaire
+    displayScore.setAttribute('value', score); // On envoie le nombre de paires trouvées par l'utilisateur dans le formulaire
     displayResult.innerText = msg; // On affiche le message à l'utilisateur
 }
 

@@ -1,4 +1,4 @@
-// Le but de la validation JS est d'empecher de surcharger le serveur de requetes qui renverrons au final une erreur. [Rappel: validation coté client en JS + coté serveur en PHP (la sécurité coté client peut être supprimée par l'utilisateur)]
+// Le but de la validation JS est d'empecher de surcharger le serveur de requetes qui renverront au final une erreur. [Rappel: validation coté client en JS + coté serveur en PHP (la sécurité coté client peut être supprimée par l'utilisateur)]
 const form = document.querySelector('#form');
 const displayError = document.querySelector('#error');
 
@@ -9,7 +9,7 @@ form.addEventListener('submit', (e) => {
 
     //Information entrée par l'utilisateur
     const playerName = document.querySelector('#name').value;
-    //Informations qu'une personne mal intentionnée pourrait modifier via l'inspecteur
+    //Informations qu'une personne mal intentionnée pourrait modifier via l'inspecteur(normalement ces champs sont cachés à l'affichage)
     const playerScore = document.querySelector('#score').value;
     const playerTime = document.querySelector('#time-to-complete').value;
 
