@@ -17,11 +17,11 @@ class ScoreManager extends DbConnexion //extends correspond à l'heritage.
     }
 
     /**
-     * Retourne les 5 meilleurs enregistrements de la BDD en se basant sur le temps(ou le score en cas d'égalité de temps). On retourne un tableau au final.
+     * Retourne les 5 meilleurs enregistrements de la BDD en se basant sur le score(ou le temps en cas d'égalité du score). On retourne un tableau au final.
      */
     public function getScores(): array 
     {
-        $sqlR = "SELECT `name`, `score`, `time` FROM `best_scores` ORDER BY `time`, `score` DESC LIMIT 5;"; //Requete en sql 
+        $sqlR = "SELECT `name`, `score`, `time` FROM `best_scores` ORDER BY `score` DESC, `time` LIMIT 5;"; //Requete en sql 
         $request = $this->connect()->prepare($sqlR); // On prépare la requete
         $request->execute(); // On execute la requête
         $scores = $request->fetchAll();
